@@ -36,8 +36,6 @@ void InitPlayers(void)
 		sfCircleShape_setFillColor(direction_circle[i], (sfColor) { 0, 255, 0, 255 });
 		sfCircleShape_setOrigin(direction_circle[i], sfVector2f_Create(10.f, 10.f));
 	}
-
-	InitProjectiles();
 }
 
 void UpdatePlayers(void)
@@ -72,13 +70,10 @@ void UpdatePlayers(void)
 
 			left_joystick.y = -left_joystick.y;
 			right_joystick.y = -right_joystick.y;
-
-			if (left_joystick.x != 0.f || left_joystick.y != 0.f)
-			{
-				players[i].direction = NormalizeVector2f(left_joystick);
-				players[i].position = AddVector2f(players[i].position, MultiplyVector2f(players[i].direction, 0.25f));
-				sfRectangleShape_setPosition(player_shape[i], players[i].position);
-			}
+			
+			players[i].direction = NormalizeVector2f(left_joystick);
+			players[i].position = AddVector2f(players[i].position, MultiplyVector2f(players[i].direction, 0.25f));
+			sfRectangleShape_setPosition(player_shape[i], players[i].position);
 
 			if (right_joystick.x != 0.f || right_joystick.y != 0.f)
 			{
@@ -138,6 +133,7 @@ void DisplayUIPlayers(WindowManager* window)
 
 void DestroyPlayers(void)
 {
+	players_ui_manager->destroy(&players_ui_manager);
 	sfRectangleShape_destroy(player_shape[0]);
 	sfRectangleShape_destroy(player_shape[1]);
 }

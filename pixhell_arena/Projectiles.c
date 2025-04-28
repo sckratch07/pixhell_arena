@@ -5,6 +5,7 @@ stdList* all_projectiles;
 
 void CreateProjectile(sfVector2f position, sfVector2f direction, ProjectileType type, float speed, float damage)
 {
+	if (direction.x == 0 && direction.y == 0) return;
 	ProjectileInfo* projectile = (ProjectileInfo*)malloc(sizeof(ProjectileInfo));
 	projectile->position = position;
 	projectile->direction = direction;
