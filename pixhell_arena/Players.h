@@ -24,6 +24,9 @@ typedef struct PlayerInfo
 	float shoot_timer;
 	float attack_timer;
 	float dodge_timer;
+	float shoot_delay;
+	float attack_delay;
+	float dodge_delay;
 	sfBool is_dodging;
 }PlayerInfo;
 

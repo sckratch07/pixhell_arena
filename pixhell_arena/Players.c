@@ -35,6 +35,10 @@ void InitPlayers(void)
 		sfCircleShape_setRadius(direction_circle[i], 10.f);
 		sfCircleShape_setFillColor(direction_circle[i], (sfColor) { 0, 255, 0, 255 });
 		sfCircleShape_setOrigin(direction_circle[i], sfVector2f_Create(10.f, 10.f));
+
+		players[i].shoot_delay = 0.2f;
+		players[i].attack_delay = 0.35f;
+		players[i].dodge_delay = 1.5f;
 	}
 }
 
@@ -86,7 +90,8 @@ void UpdatePlayers(void)
 			}
 
 			players[i].shoot_timer += DeltaTime;
-			if (players[i].shoot_timer > 0.2f && right_trigger >= 0.8f)
+			if (players[i].shoot_delay
+	> 0.2f && right_trigger >= 0.8f)
 			{
 				if (right_joystick.x != 0.f || right_joystick.y != 0.f)
 				{
@@ -100,14 +105,14 @@ void UpdatePlayers(void)
 			}
 
 			players[i].attack_timer += DeltaTime;
-			if (players[i].attack_timer > 0.2f && left_trigger >= 0.8f)
+			if (players[i].attack_delay > 0.2f && left_trigger >= 0.8f)
 			{
 				printf("Player %d attack\n", i);
 				players[i].attack_timer = 0.f;
 			}
 
 			players[i].dodge_timer += DeltaTime;
-			if (players[i].dodge_timer > 1.5f && isButtonPressed(i, B))
+			if (players[i].dodge_delay > 1.5f && isButtonPressed(i, B))
 			{
 				players[i].is_dodging = sfTrue;
 				players[i].dodge_timer = 0.f;
