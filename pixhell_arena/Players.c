@@ -57,7 +57,7 @@ void UpdatePlayers(void)
 			}
 			else
 			{
-				players[i].position = AddVector2f(players[i].position, MultiplyVector2f(players[i].direction, 0.85f));
+				players[i].position = AddVector2f(players[i].position, MultiplyVector2f(players[i].direction, 0.65f));
 				sfRectangleShape_setPosition(player_shape[i], players[i].position);
 			}
 		}

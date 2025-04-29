@@ -35,9 +35,9 @@ sfBool isButtonPressed(t_joyNum joyNum, t_buttonNum buttonNum)
     return  (state.Gamepad.wButtons & buttonNum);
 }
 
-sfBool isAnyXBox360ControllerConnected()
+sfBool isTwoControllerConnected()
 {
-    return  (isConnected(0) || isConnected(1));
+    return  (isConnected(0) && isConnected(1));
 }
 
 sfBool voiceSupported(t_joyNum joyNum)

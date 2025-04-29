@@ -32,7 +32,7 @@ enum {
 sfBool isConnected(t_joyNum joyNum);
 unsigned int getButtonCount(t_joyNum joyNum);
 sfBool isButtonPressed(t_joyNum joyNum, t_buttonNum buttonNum);
-sfBool isAnyXBox360ControllerConnected();
+sfBool isTwoControllerConnected();
 void getTriggers(t_joyNum joyNum, float* left, float* right);
 void getSticksPosition(t_joyNum joyNum, sfVector2f* left, sfVector2f* right);
 void setVibration(t_joyNum joyNum, float leftMotor, float rightMotor);

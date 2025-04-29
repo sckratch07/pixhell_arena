@@ -2,6 +2,7 @@
 #include "ResourcesManager.h"
 #include "UI.h"
 #include "Game.h"
+#include "Gamepad.h"
 
 SpriteManager* spriteManager;
 UIObjectManager* UIManager;
@@ -18,7 +19,7 @@ void UpdateUIVisual(UIObject* object, WindowManager* window)
 
 	if (object->isClicked)
 	{
-		if (object->nameIs(object, "Play") && window->GetTimer(window) > .2f)
+		if (object->nameIs(object, "Play") && window->GetTimer(window) > .2f /*&& isTwoControllerConnected()*/)
 		{
 			ChangeMainState("InGame");
 			window->ResetTimer(window);
